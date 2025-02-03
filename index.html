@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MrBeast Giveaway</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('wele.webp') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: white;
+            text-align: center;
+        }
+        .container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .btn {
+            background-color: #ffcc00;
+            border: none;
+            padding: 15px 30px;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: black;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+        .popup canvas {
+            border-radius: 50%;
+            background-color: white;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🎉 MrBeast Giveaway! 🎉</h1>
+        <p>Spin the wheel for a chance to win HUGE prizes!</p>
+        <button class="btn" onclick="showPopup()">SPIN NOW</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <h2>🎡 Spin the Wheel! 🎡</h2>
+        <canvas id="wheel" width="300" height="300"></canvas>
+        <br>
+        <button class="btn" id="spinButton" onclick="spinWheel()">SPIN</button>
+        <button class="btn" id="claimButton" onclick="window.location.href='prize.html'" style="display: none;">CLAIM $1000 USD</button>
+    </div>
+
+    <script>
+        const popup = document.getElementById("popup");
+        const wheel = document.getElementById("wheel");
+        const ctx = wheel.getContext("2d");
+        const spinButton = document.getElementById("spinButton");
+        const claimButton = document.getElementById("claimButton");
+
+        function showPopup() {
+            popup.style.display = "block";
+        }
+
+        function drawWheel() {
+            const prizes = ["$10,000", "$500", "$5,000", "$250", "$1000", "$50", "$20"];
+            const colors = ["#ff0000", "#ff8000", "#ffff00", "#00ff00", "#00ffff", "#0000ff", "#8000ff"];
+            const sliceAngle = (2 * Math.PI) / prizes.length;
+            const centerX = wheel.width / 2;
+            const centerY = wheel.height / 2;
+            const radius = wheel.width / 2;
+
+            for (let i = 0; i < prizes.length; i++) {
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, i * sliceAngle, (i + 1) * sliceAngle);
+                ctx.fillStyle = colors[i];
+                ctx.fill();
+                ctx.stroke();
+                ctx.closePath();
+
+                // Text
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(i * sliceAngle + sliceAngle / 2);
+                ctx.fillStyle = "white";
+                ctx.font = "bold 14px Arial";
+                ctx.fillText(prizes[i], radius / 2, 10);
+                ctx.restore();
+            }
+        }
+
+        function spinWheel() {
+            let degrees = 1800 + Math.floor(Math.random() * 360); // Always lands on $1000
+            let spins = degrees / 360;
+            let selectedPrize = "$1000";
+
+            wheel.style.transition = "transform 3s ease-out";
+            wheel.style.transform = `rotate(${degrees}deg)`;
+
+            setTimeout(() => {
+                wheel.style.transition = "none";
+                wheel.style.transform = "rotate(1440deg)"; // Reset rotation
+                alert(`🎉 Congratulations! You won ${selectedPrize}! 🎉`);
+                spinButton.style.display = "none";
+                claimButton.style.display = "block";
+            }, 3000);
+        }
+
+        drawWheel();
+    </script>
+
+</body>
+</html>
